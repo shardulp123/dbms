@@ -1,0 +1,56 @@
+db.createCollection("Student")
+
+db.Student.insertMany([
+{
+Name : "Harsh",
+Class : "TE",
+Address : "Nashik",
+Age : 20 ,
+fees : 10000
+},
+{
+Name : "Kushal",
+Class : "TE",
+Address : "Shirpur",
+Age : 21,
+fees : 50000
+},
+{
+Name : "Rohit",
+Class : "SE",
+Address : "Sangamner",
+Age : 19,
+fees : 20000
+},
+{
+Name : "Deepraj",
+Class : "TE",
+Address : "Dhule",
+Age : 19,
+fees : 50000
+},
+{
+Name : "Shardul",
+Class : "TE",
+Address : "Akola",
+Age : 20,
+fees : 40000
+},
+{
+Name : "Summit",
+Class : "TE",
+Address : "Akola",
+Age : 20,
+fees : 40000
+}
+])
+
+db.Student.find({Class:"TE"}).count()
+
+db.Student.aggregate({$match: {Age : {"$gt": 19}}})
+
+db.Student.createIndex({Name:1})
+
+db.Student.getIndexes()
+
+db.Student.find().sort({Age:1})

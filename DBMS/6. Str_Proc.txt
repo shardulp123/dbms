@@ -1,0 +1,34 @@
+create table studmarks(name varchar(25),total_marks int);
+
+create table result(roll_no int,name varchar(25),class varchar(25));
+
+delimiter $
+
+create procedure proc_grade(in rollno int,in name varchar(25),marks int)
+begin
+declare class varchar(25);
+if marks>=990 and marks<=1500 then set class="Distinction";
+elseif marks>=900 and marks<=989 then set class="First Class";
+elseif marks>=825 and marks<=899 then set class="Higher Second Class";
+end if;
+insert into studmarks values(name,marks);
+insert into result values(rollno,name,class);
+end $
+
+call proc_grade(1,"Deepraj",850); $
+
+call proc_grade(2,"Harsh",882); $
+
+call proc_grade(3,"Kushal",920); $
+
+call proc_grade(4,"Rohit",975); $
+
+call proc_grade(5,"Shardul",1015); $
+
+call proc_grade(6,"Aditya",1200); $
+
+call proc_grade(7,"Shivtej",1338); $
+
+select * from studmarks; $
+
+select * from result; $
