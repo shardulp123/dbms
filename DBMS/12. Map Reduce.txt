@@ -1,0 +1,15 @@
+use database1
+
+db.createCollection("StudentMarks")
+
+
+db.StudentMarks.insertMany([ { Name : "Kushal", Age : 20, Total_Marks : 35 }, { Name : "Harsh", Age : 20, Total_Marks : 90} , { Name : "Rohit" , Age : 21 , Total_Marks : 70 } , { Name : "Deepraj" , Age : 19 , Total_Marks : 60 } , { Name : "Shardul" , Age : 20 , Total_Marks : 95 }])
+
+
+var mapFunction1 = function() { emit(this.Age,this.Total_Marks);};
+
+var reduceFunction1 = function(Age , Total_Marks) { return Array.sum(Total_Marks); };
+
+db.StudentMarks.mapReduce(mapFunction1, reduceFunction1 , {out : "Result"} )
+
+db.Result.find()

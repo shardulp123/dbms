@@ -1,0 +1,28 @@
+#pip install pymongo
+
+from pymongo import MongoClient
+
+myclient = MongoClient('localhost', 27017)
+
+print(myclient)
+
+
+
+mydb = myclient["mydatabase"]
+
+mycol = mydb["customers"]
+
+mydict = { "name": "John", "address": "Pune" }
+
+x = mycol.insert_one(mydict)
+
+
+
+dblist = myclient.list_database_names()
+
+print(dblist)
+
+if "mydatabase" in dblist:
+  print("The database exists.")
+else :
+    print("Not")

@@ -1,0 +1,21 @@
+#pip install mysql-connector
+
+import mysql.connector as mysql
+
+mydb1 = mysql.connect(host="localhost",user="root",password="password")
+if mydb1.is_connected():
+    print("Successfully connected mysql")
+else:
+    print("Mysql Not connected")
+
+
+mydb2 = mysql.connect(host="localhost",user="root",password="password",database="connect_db")
+
+if mydb2.is_connected():
+    print("Successfully connected to database ")
+else:
+    print("Database Not Connected")
+    
+mycursor = mydb1.cursor()
+
+mycursor.execute("CREATE DATABASE databasename")

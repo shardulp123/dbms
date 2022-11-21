@@ -1,0 +1,61 @@
+create table Salesman(salesman_id int primary key,name varchar(255),city varchar(255),commission float);
+
+insert into Salesman value(102,'rohit','paris',0.2);
+insert into Salesman value(103,'sham','paris',0.3);
+insert into Salesman value(104,'ram','pune',0.4);
+insert into Salesman value(105,'govind','pune',0.5);
+insert into Salesman value(5001,'sam','paris',0.6);
+
+create table Customer(Customer_id int primary key,Customer_name varchar(255),city varchar(255),grade int,salesman_id int);
+
+insert into Customer value(1,'rohan','shirpur',100,101);
+insert into Customer value(2,'amit','nagpur',200,102);
+insert into Customer value(3,'raghav','paris',300,103);
+insert into Customer value(4,'kartik','new york',400,104);
+insert into Customer value(5,'pratik','nashik',500,105);
+insert into Customer value(6,'aryan','thane',600,5001);
+
+create table Orders(order_no int primary key,purchase_amt int,order_date date,Customer_id int,salesman_id int);
+
+insert into Orders value(201,1000,'2022-01-01',1,101);
+insert into Orders value(202,1000,'2022-01-02',2,102);
+insert into Orders value(203,2000,'2022-01-03',3,103);
+insert into Orders value(204,4000,'2022-01-04',3,104);
+insert into Orders value(205,6000,'2022-01-05',5,105);
+insert into Orders value(206,9000,'2022-01-06',6,5001);
+insert into Orders value(207,7000,'2022-01-06',6,102);
+insert into Orders value(208,8000,'2022-01-06',8,103);
+
+select * from Salesman;
+
+select * from Customer;
+
+select * from Orders;
+
+select DISTINCT salesman_id from Orders;
+
+select salesman_id from Orders;
+
+select Name,City from Salesman where city = 'Paris';
+
+select * from Customer where grade = 200;
+
+select order_no,order_date,purchase_amt from Orders where salesman_id = 5001;
+
+select * from Customer where Customer_Name LIKE '%n';
+
+update Salesman set city = 'Kerala' where city = 'pune';
+
+select * from Salesman;
+
+delete from Customer where Customer_Name = 'amit';
+
+select * from Customer;
+
+select sum(purchase_amt) from Orders;
+
+select Customer_id,order_date,MAX(purchase_amt) from orders group by customer_id,order_date;
+
+select * from Orders;
+
+select Customer_Name from Customer where city = 'new york' OR grade<=100;
